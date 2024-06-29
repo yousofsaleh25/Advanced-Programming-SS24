@@ -16,7 +16,7 @@ This repository contains the work for the Advanced Programming course (SS24) at 
 - **Google Python Exercises:** A series of Python programming exercises aimed at developing proficiency in Python.
 - **Tasks to Complete:**
   - [] **Basic exercises:**
-    - [] list1.py
+    - [x] list1.py
     - [] list2.py
     - [] mimic.py
     - [] string1.py

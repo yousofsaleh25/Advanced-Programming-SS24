@@ -22,7 +22,20 @@
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
   # +++your code here+++
-  return
+  """
+  Args:
+  words: list of strings
+
+  Return:
+  int: count of strings meeting the criteria
+  """
+  count = 0
+  for str in words:
+    if len(str) >= 2 and str[0] == str[-1]:
+      count += 1
+  
+  return count
+
 
 
 # B. front_x
@@ -34,7 +47,17 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
   # +++your code here+++
-  return
+  """
+  Args:
+  words: list of strings
+
+  Return:
+  list: sorted list with strings starting with 'x' at the front
+  """
+  list_x = [str for str in words if str.startswith('x')] # list for sorting the words started with x
+  list_other = [str for str in words if not str.startswith('x')] # list for sorting the other words which are not starting with x
+
+  return sorted(list_x) + sorted(list_other)
 
 
 
@@ -46,7 +69,14 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
   # +++your code here+++
-  return
+  """
+  Args:
+  tuples: list of non-empty tuples
+
+  Returns:
+  list: list of tuples sorted by the last element in each tuple
+  """
+  return sorted(tuples, key= lambda x: x[-1]) # the key takes a lamda function that exracts the last elemtent in the tuples and then sorted based on this number
 
 
 # Simple provided test() function used in main() to print
