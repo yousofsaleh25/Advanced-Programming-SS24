@@ -14,8 +14,16 @@
 # modify the passed in list.
 def remove_adjacent(nums):
   # +++your code here+++
-  return
+  """  
+  Args:
+  numbers: list of numbers
 
+  Returns:
+  list: list with adjacent duplicates removed
+  """
+
+  return list(set(nums)) # convreting to set removing duplicates then converting to list again. 
+                         # Hint: this technique not preserving the order of the list and this not required in the criteria
 
 # E. Given two lists sorted in increasing order, create and return a merged
 # list of all the elements in sorted order. You may modify the passed in lists.
@@ -23,7 +31,31 @@ def remove_adjacent(nums):
 # pass of both lists.
 def linear_merge(list1, list2):
   # +++your code here+++
-  return
+  """
+  Args:
+  list1: A list of elements sorted in increasing order.
+  list2: A list of elements sorted in increasing order.
+
+  Returns:
+  list: A merged list of all elements in sorted order.
+  """
+  # Initialize pointers for both lists
+  i, j = 0, 0
+  merged_list = []
+
+  # Traverse both lists and merge them
+  while i < len(list1) and j < len(list2):
+    if list1[i] < list2[j]:
+      merged_list.append(list1[i])
+      i += 1
+    else:
+      merged_list.append(list2[j])
+      j += 1
+
+  merged_list.extend(list1[i:]) # If there are remaining elements in list1 add them to merged_list
+  merged_list.extend(list2[j:]) # If there are remaining elements in list2 add them to merged_list
+  
+  return merged_list # Hint sorted(list1 + list2) is not a linear solution
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
 # is not constant time with the standard python list implementation, so
