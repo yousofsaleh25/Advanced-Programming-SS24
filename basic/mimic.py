@@ -44,17 +44,63 @@ columns, so the output looks better.
 import random
 import sys
 
+## To run the program you should change the directory in the terminal window to be where the code "mimic.py" and text "small.txt" are
+## the directory in my computer is 'C:\Users\Dell\Documents\GitHub\Advanced-Programming-SS24\basic>'
+## Then run the following    -- python mimic.py "small.txt" --
 
 def mimic_dict(filename):
   """Returns mimic dict mapping each word to list of words which follow it."""
   # +++your code here+++
-  return
+  """
+  Args: 
+  filename: the .txt file to be read
+
+  Returns: 
+  dictionary mapping each word to a list of all the words that immediately follow that word in the file.
+  """
+
+  ## Open the file and read it's content
+  with open(filename, 'r', encoding='utf-8') as file:
+    content = file.read()
+  
+  # split the text into words depending on the space seperator
+  words = content.split()
+  mimic_dict = {}
+
+  # mapping each word to a list of all the words that immediately follow that word in the file and the first word is mapped based on emtpy string "" as a key
+  prev_word = ""
+  for word in words:
+    if prev_word not in mimic_dict.keys():
+      mimic_dict[prev_word] = [word]
+    else:
+      mimic_dict[prev_word].append(word)
+    prev_word = word
+
+  return mimic_dict
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
   # +++your code here+++
-  return
+  """
+  Args:
+  mimic_dict: The dictionary returned by mimic_dict() function.
+  word: The starting word for generating random text.
+  """
+  line_lenght = 0   # count the number of character at each line
+  for _ in range(200):
+
+    print(word, end=' ')
+    
+    line_lenght += len(word) + 1
+    if line_lenght >= 70: # linebreaks around 70 columns, so the output looks better.
+      print() # print a new line
+      line_lenght = 0 # Count again starting from 0 for the next line
+
+    next_words = mimic_dict.get(word, mimic_dict[""]) # get the list of words that immediately following the given word and if the word is not exist as a key return default value which the first word in the string ""
+    word = random.choice(next_words) # obtain ramdom word from the list of words
+
+  print()
 
 
 # Provided main(), calls mimic_dict() and mimic()

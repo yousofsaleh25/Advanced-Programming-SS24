@@ -18,7 +18,7 @@ This repository contains the work for the Advanced Programming course (SS24) at 
   - [] **Basic exercises:**
     - [x] list1.py
     - [x] list2.py
-    - [] mimic.py
+    - [x] mimic.py
     - [] string1.py
     - [] string2.py
     - [] wordcount.py
