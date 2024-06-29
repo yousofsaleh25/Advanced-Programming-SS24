@@ -20,7 +20,7 @@ This repository contains the work for the Advanced Programming course (SS24) at 
     - [x] list2.py
     - [x] mimic.py
     - [x] string1.py
-    - [] string2.py
+    - [x] string2.py
     - [] wordcount.py
   - [] **Babynames exercises:**
     - [] babynames.py

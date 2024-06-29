@@ -17,7 +17,21 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
+  """
+  Args:
+  s: A string to be modified.
+  
+  Returns:
+  The modified string according to the rules.
+  """
+
+  if len(s) < 3: # check the length of the string
+    return s
+  elif s.endswith("ing"): # check if the string ends with ing
+    return s + "ly"
+  else:
+    return s + "ing"  
+
 
 
 # E. not_bad
@@ -30,7 +44,19 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
+  """
+  Args:
+  s: The input string.
+  
+  Returns:
+  The modified string with 'not'...'bad' replaced by 'good' if applicable.
+  """
+
+  not_inx = s.find("not") # find the first appearance of the word "not", return the "n" index
+  bad_inx = s.find("bad") # fint the forst appearance of the word "bad", return the "b" index
+  if not_inx != -1 and bad_inx != -1 and bad_inx > not_inx: # check if words "not" and "bad" exists and word "bad" appear after word "not"
+    s = s[:not_inx] + "good" + s[bad_inx+3:] # replace the string from word "not" to "bad" with word "good"
+  return s # the question only ask about first appearance so we don't mind if it appears many times or not and just the first appearance is considered
 
 
 # F. front_back
@@ -42,7 +68,19 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  """
+  Args:
+  a: First input string.
+  b: Second input string.
+
+  Returns:
+  A new string formed by concatenating the front halves and back halves of both strings.
+  """  
+  # find the mid index for a and b. The +1 to handle odd lengths by giving the extra char to the front half
+  a_mid = (len(a) + 1) // 2 
+  b_mid = (len(b) + 1) // 2
+
+  return a[:a_mid] + b[:b_mid] + a[a_mid:] + b[b_mid:]  #  a-front + b-front + a-back + b-back
 
 
 # Simple provided test() function used in main() to print
