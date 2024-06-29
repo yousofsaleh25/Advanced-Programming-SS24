@@ -5,8 +5,9 @@ This repository contains the work for the Advanced Programming course (SS24) at 
 - **Course:** Advanced Programming (SS24)
 - **Instructor:** Tobias Schaffer
 - **Institution:** THD (Technische Hochschule Deggendorf)
-- **Deadline:** 21.07.2024
 - **Author:** Youssef Saleh
+- **Deadline:** 21.07.2024
+
 
 ## Installation Instructions
 - Python (version: 3.12.3)
