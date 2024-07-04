@@ -23,5 +23,5 @@ This repository contains the work for the Advanced Programming course (SS24) at 
     - [x] string1.py
     - [x] string2.py
     - [x] wordcount.py
-  - [] **Babynames exercises:**
-    - [] babynames.py
+  - [x] **Babynames exercises:**
+    - [x] babynames.py

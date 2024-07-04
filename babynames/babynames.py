@@ -41,7 +41,31 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  return
+  # Open the HTML file and read its content
+  with open(filename, 'r', encoding='utf-8') as file:
+      content = file.read()
+
+  # Extract the year
+  year_match = re.search(r'Popularity in (\d{4})', content)
+  year = year_match.group(1)
+
+  # Extract the names and rank numbers
+  tuples = re.findall(r'<tr align="right"><td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', content)
+  
+  # Add the names and rank side by side into a list
+  # NOTE if we use dictionary for names and ranks the unique names only will be taken, but I found that there is names valid for male and female and has different ranks,
+  # so it's important to not use a dictionary as a solution
+  result = []
+  for rank, male_name, female_name in tuples:
+    result.append(f"{male_name} {rank}")
+    result.append(f"{female_name} {rank}")
+
+  # sort the names alpabetically
+  result = sorted(result) # There is 1000 rank with 1000 names for male and 1000 names for female, so now the len(result) = 2000
+  # insert the year into index 0
+  result.insert(0, year)
+
+  return result
 
 
 def main():
@@ -64,5 +88,21 @@ def main():
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
 
+  # to run the code over all .html file run the following line command
+  # python babynames.py --summaryfile baby1990.html baby1992.html baby1994.html baby1996.html baby1998.html baby2000.html baby2002.html baby2004.html baby2006.html baby2008.html
+  # NOTE it's prefered to use file for output because there is too many lines the won't fit in your TERMINAL
+  for filename in args:
+    names_list = extract_names(filename)
+    text_output = '\n'.join(names_list)
+
+    if summary:
+      with open(f"{filename.split('.')[0]}_output_names.txt", 'w') as summary_file:
+        summary_file.write(text_output)
+    else:
+      print(text_output)
+
+# to run the code over all .html file run the following line command
+# python babynames.py --summaryfile baby1990.html baby1992.html baby1994.html baby1996.html baby1998.html baby2000.html baby2002.html baby2004.html baby2006.html baby2008.html
+# NOTE it's prefered to use file for output because there is too many lines the won't fit in your TERMINAL
 if __name__ == '__main__':
   main()
